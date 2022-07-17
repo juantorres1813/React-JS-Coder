@@ -1,0 +1,14 @@
+.navbar-principal {
+    display: flex;
+    justify-content: space-between;
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+    width: 100%;
+    padding: 10px;
+}
+
+.ul-menu {
+    display: flex;
+    flex-flow: row wrap;
+    list-style: none;
+}

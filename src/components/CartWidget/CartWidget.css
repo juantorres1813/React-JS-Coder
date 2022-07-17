@@ -1,0 +1,6 @@
+.cart-widget{
+    display: flex;
+    align-items: center;
+    color: white;
+    width: 60px;
+}
