@@ -10,7 +10,7 @@ function ItemCount({ stockProduct, action}) {
     }
 
     const removeNumber = () => {
-        if(contador>0)
+        if(contador>1)
         setContador(contador - 1)
     }
 

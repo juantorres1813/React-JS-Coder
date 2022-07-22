@@ -8,9 +8,7 @@ function App() {
     <div className="App">
       <NavBar /> 
       <div>
-        <ItemListContainer section="Productos en oferta"/>
         <ItemListContainer section="Productos de temporada"/>
-        <ItemListContainer section="Productos relacionados"/>
       </div>     
     </div>
   );

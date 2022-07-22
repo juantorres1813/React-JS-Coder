@@ -1,7 +1,7 @@
 import ItemCount from "../ItemCount/ItemCount"
 
 
-const ItemProduct = ({data}) => {
+const Item = ({data}) => {
     const {title, image, price, stock} = data
 
     return (
@@ -14,12 +14,4 @@ const ItemProduct = ({data}) => {
     )
 }
 
-export default ItemProduct
-
-/* entonces tienen 3 componentes 
-ItemListContainer.js -> ItemList.js -> Ítem.js
-ItemListContainer ahcer en llamado
-ItemList hacen el map
-Item muestran la info
-el Item seria el ItemProduct del profe
-*/
+export default Item
