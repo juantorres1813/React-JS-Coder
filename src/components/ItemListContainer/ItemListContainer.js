@@ -22,16 +22,6 @@ const ItemListContainer = ({section}) => {
 
     const [listProducts, setlistProducts] = useState([])
 
-    getProducts
-    .then((res)=>{
-        //console.log(res)
-        setlistProducts(res)
-    })
-    .catch((error)=>{
-        console.log(error)
-    })
-
-
     return (
     <div>
         <h3>{section}</h3>
