@@ -1,19 +1,25 @@
 import './App.css';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavBar from './components/NavBar/Navbar.js'
-//import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import NavBar from './components/NavBar/Navbar.js';
+import Home from './pages/Home';
+import DetailPage from './pages/DetailPage';
+import Catalogo from './pages/Catalogo';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <div className="App">
-      <NavBar /> 
-      <div>
-        {/* <ItemListContainer section="Productos de temporada"/> */}
-        <ItemDetailContainer/>
-      </div>     
-    </div>
+    <>
+      <BrowserRouter>
+        <NavBar /> 
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/catalogo/:id' element={<DetailPage/>}/>
+          <Route path='/catalogo' element={<Catalogo/>}/>
+          <Route path='*' element={<h1>ERROR 404 - Página no encontrada</h1>}/>  
+        </Routes>    
+      </BrowserRouter>
+    </>
   );
 }
 
