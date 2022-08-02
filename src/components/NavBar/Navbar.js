@@ -19,6 +19,7 @@ const NavBar = () => {
                         <ul className='ul-menu'>
                             <Link to="/"><li><button>Home</button></li></Link>
                             <Link to="/catalogo"><li><button>Catálogo</button></li></Link>
+                            <Link to="/categorias/buzosysweaters"><li><button>Buzos y Sweaters</button></li></Link>
                         </ul>
                     </Nav>
                 </Navbar.Collapse>

@@ -1,0 +1,13 @@
+.item-product{
+    display: flex;
+    flex-direction: column;
+    flex: wrap;
+    text-align: center;
+    justify-content: center;
+    box-shadow: 1px 1px 5px gray;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}

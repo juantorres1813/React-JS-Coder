@@ -2,8 +2,8 @@ import ItemCount from "../ItemCount/ItemCount"
 import './ItemDetail.css';
 
 
-const ItemDetail = ({dataProduct}) => {
-    const {title, image, price, stock, image2, image3, description} = dataProduct
+const ItemDetail = ({data}) => {
+    const {title, image, price, stock, image2, image3, description} = data
 
     return (
     <div className="item-detail">

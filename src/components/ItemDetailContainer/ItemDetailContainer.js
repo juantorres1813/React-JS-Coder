@@ -1,6 +1,7 @@
 import detailmock from "../../utils/details.mock"
 import ItemDetail from "../ItemDetail/ItemDetail"
 import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
 
 const ItemDetailContainer = () => {
     const getItem = new Promise((resolve,reject)=>{
@@ -9,22 +10,32 @@ const ItemDetailContainer = () => {
         }, 2000)
     })
 
+    const {id} = useParams()
+
     useEffect(()=>{
         getItem
         .then((res)=>{
             //console.log(res)
-            setlistItem(res)
+            FilterbyID(res)
         })
         .catch((error)=>{
             console.log(error)
         })
-    }, [])
+    }, [id])
 
-    const [listItem, setlistItem] = useState({})
+    const FilterbyID = () =>{
+        detailmock.some((product)=>{
+            if (product.id == id) {
+                setProductData(product)
+            }
+        })
+    }
+
+    const [productData, setProductData] = useState([])
 
     return (
     <div>
-        <ItemDetail dataProduct={listItem}/>
+        <ItemDetail data={productData}/>
     </div>
     )
 }

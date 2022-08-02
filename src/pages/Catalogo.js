@@ -1,9 +1,12 @@
+import ItemListContainer from "../components/ItemListContainer/ItemListContainer"
 
 
 
 const Catalogo = () => {
     return (
-    <div>Catalogo</div>
+    <div>
+        <ItemListContainer/>
+    </div>
     )
 }
 

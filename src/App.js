@@ -5,7 +5,7 @@ import NavBar from './components/NavBar/Navbar.js';
 import Home from './pages/Home';
 import DetailPage from './pages/DetailPage';
 import Catalogo from './pages/Catalogo';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Category from './pages/Category';
 
 function App() {
   return (
@@ -14,8 +14,9 @@ function App() {
         <NavBar /> 
         <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/catalogo/:id' element={<DetailPage/>}/>
+          <Route path='/item/:id' element={<DetailPage/>}/>
           <Route path='/catalogo' element={<Catalogo/>}/>
+          <Route path='categorias/:category' element={<Category/>}/>
           <Route path='*' element={<h1>ERROR 404 - Página no encontrada</h1>}/>  
         </Routes>    
       </BrowserRouter>
