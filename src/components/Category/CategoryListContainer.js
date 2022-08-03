@@ -2,6 +2,7 @@ import detailmock from '../../utils/details.mock';
 import {useParams} from 'react-router-dom';
 import {useEffect, useState} from 'react';
 import Item from '../Item/Item';
+import './CategoryListContainer.css'
 
 
 const CategoryListContainer = () => {
@@ -32,7 +33,7 @@ const CategoryListContainer = () => {
             }
     
     return (
-    <div>
+    <div className='list-products'>
         {CategoryData?.map((product)=>{
             return <Item data={product} key={product?.id} />
         })}
