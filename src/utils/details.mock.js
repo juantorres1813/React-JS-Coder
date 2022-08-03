@@ -7,7 +7,7 @@ const detailmock = [{
     image3: 'logo.jpg',
     description: "Campera Azul Mistral Holden",
     stock: 6,
-    category: "Camperas"
+    category: "camperas"
 },
 {
     id:2,
@@ -18,7 +18,7 @@ const detailmock = [{
     image2: 'logo.jpg',
     image3: 'logo.jpg',
     description: "Remera Verde Mistral",
-    category: "Remeras"
+    category: "remeras"
 },
 {
     id:3,

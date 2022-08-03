@@ -1,7 +1,7 @@
 import detailmock from '../../utils/details.mock';
 import {useParams} from 'react-router-dom';
 import {useEffect, useState} from 'react';
-import ItemList from '../ItemList/ItemList';
+import Item from '../Item/Item';
 
 
 const CategoryListContainer = () => {
@@ -12,6 +12,8 @@ const CategoryListContainer = () => {
     })
 
     const {category} = useParams()
+
+    const [CategoryData, setCategoryData] = useState([])
 
     useEffect(()=>{
         getCategory
@@ -25,18 +27,15 @@ const CategoryListContainer = () => {
     }, [category])
 
     const FilterbyCategory = () =>{
-        detailmock.some((product)=>{
-            if (product.category === category) {
-                setCategoryData(product)
+        const filter = detailmock.filter((products) => products.category === category);
+        setCategoryData(filter);
             }
-        })
-    }
-
-    const [CategoryData, setCategoryData] = useState([])
     
     return (
     <div>
-        <ItemList dataProducts={CategoryData}/>
+        {CategoryData?.map((product)=>{
+            return <Item data={product} key={product?.id} />
+        })}
     </div>
     )
 }

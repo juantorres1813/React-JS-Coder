@@ -5,7 +5,6 @@ import './Item.css'
 
 const Item = ({data}) => {
     const {title, image, price, stock, id} = data
-
     return (
         <div className="item-product">
             <Link to={`/item/${id}`} >
