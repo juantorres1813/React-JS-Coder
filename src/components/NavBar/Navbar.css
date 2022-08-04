@@ -4,7 +4,6 @@
     --bs-bg-opacity: 1;
     background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
     width: 100%;
-    padding: 10px;
 }
 
 .ul-menu {
@@ -12,3 +11,19 @@
     flex-flow: row wrap;
     list-style: none;
 }
+.ul-menu button{
+    text-transform: uppercase;
+    font-size: 28px;
+    background: #e3d0d0;
+}
+
+.ul-menu button:hover {
+    background-color: rgba(53, 53, 53, 0.3);
+    transition: .4s;
+}
+
+.navimg{
+    width: 200px;
+    height: 120px;
+}
+

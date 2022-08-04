@@ -5,9 +5,19 @@
     text-align: center;
     justify-content: center;
     box-shadow: 1px 1px 5px gray;
+    font-size: 20px;
+    font-weight: bold;
+    background: rgba(161, 161, 161, 0.28);
+        object-fit: cover;
+        box-shadow: 1px 1px gray;
 }
 
 a{
     text-decoration: none;
     color: black;
+}
+
+img{
+    height: 320px;
+    width: 257px;
 }
