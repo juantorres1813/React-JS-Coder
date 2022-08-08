@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
-function ItemCount({ stockProduct, action}) {
-    const [contador, setContador] = useState(1)
+function ItemCount({ stockProduct, setQuantitySelected}) {
+    const [contador, setContador] = useState(0)
     
     const addNumber = () =>{
         if(contador<stockProduct){
@@ -14,6 +14,9 @@ function ItemCount({ stockProduct, action}) {
         setContador(contador - 1)
     }
 
+    const onAdd = () => {
+        setQuantitySelected(contador)
+    }
 
 
     useEffect( () => {
@@ -21,12 +24,12 @@ function ItemCount({ stockProduct, action}) {
 
     return(
         <div>
-        <div className='countProd'>
+            <div className='countProd'>
                 <button onClick={removeNumber}>-</button>
                 <p>{contador}</p>
                 <button onClick={addNumber}>+</button>
             </div>
-            <button onClick={action}>Comprar</button>
+            <button onClick={onAdd}>AGREGAR AL CARRITO</button>
         </div>
 )}
 

@@ -11,8 +11,8 @@ const Item = ({data}) => {
                 <img src={`/assets/multimedia/${image}`} alt="imagen"/>
                 <p>{title}</p>
                 <span>$ {price}</span>
+                <h3>{stock} disponibles</h3>
             </Link>
-            <ItemCount stockProduct={stock} />
         </div>
     )
 }

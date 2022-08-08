@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import DetailPage from './pages/DetailPage';
 import Catalogo from './pages/Catalogo';
 import Category from './pages/Category';
+import Checkout from './pages/Checkout';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path='/' element={<Home/>}/>
           <Route path='/item/:id' element={<DetailPage/>}/>
           <Route path='/catalogo' element={<Catalogo/>}/>
+          <Route path='/cart' element={<Checkout/>}/>
           <Route path='categorias/:category' element={<Category/>}/>
           <Route path='*' element={<h1>ERROR 404 - Página no encontrada</h1>}/>  
         </Routes>    
