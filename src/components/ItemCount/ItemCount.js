@@ -1,13 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { CartContext } from "../../context/CartContext";
 
-function ItemCount({ stockProduct, setQuantitySelected}) {
-    const [contador, setContador] = useState(0)
+function ItemCount({ stockProduct, setQuantitySelected, productData}) {
+    const [contador, setContador] = useState(1)
     
     const addNumber = () =>{
         if(contador<stockProduct){
             setContador(contador + 1)
         }
     }
+
+    const {addToCart} = useContext(CartContext)
 
     const removeNumber = () => {
         if(contador>1)
@@ -16,6 +19,9 @@ function ItemCount({ stockProduct, setQuantitySelected}) {
 
     const onAdd = () => {
         setQuantitySelected(contador)
+        //console.log(productData)
+        addToCart({ ...productData, contador })
+
     }
 
 

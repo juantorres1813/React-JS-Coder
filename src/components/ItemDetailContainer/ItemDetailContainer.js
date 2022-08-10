@@ -25,7 +25,7 @@ const ItemDetailContainer = () => {
 
     const FilterbyID = () =>{
         detailmock.some((product)=>{
-            if (product.id == id) {
+            if (product.id.toString() === id) {
                 setProductData(product)
             }
         })

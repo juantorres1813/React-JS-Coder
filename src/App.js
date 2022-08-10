@@ -7,10 +7,12 @@ import DetailPage from './pages/DetailPage';
 import Catalogo from './pages/Catalogo';
 import Category from './pages/Category';
 import Checkout from './pages/Checkout';
+import CartProvider from './context/CartContext';
 
 function App() {
   return (
     <>
+      <CartProvider>
       <BrowserRouter>
         <NavBar /> 
         <Routes>
@@ -22,6 +24,7 @@ function App() {
           <Route path='*' element={<h1>ERROR 404 - Página no encontrada</h1>}/>  
         </Routes>    
       </BrowserRouter>
+      </CartProvider>
     </>
   );
 }
