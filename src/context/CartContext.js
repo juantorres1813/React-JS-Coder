@@ -7,8 +7,6 @@ const CartProvider = ({children}) => {
 
     const [totalProducts, setTotalProducts] = useState(0)
 
-    console.log(CartProducts)
-
     const clear = () => {
         setCartProducts([])
     }

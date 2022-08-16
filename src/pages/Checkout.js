@@ -1,9 +1,14 @@
-import React from 'react'
+import Cart from "../components/Cart/Cart"
+import {useContext} from 'react'
+import { CartContext } from "../context/CartContext"
+import {Link} from 'react-router-dom'
+
 
 const Checkout = () => {
+    const {CartProducts} = useContext(CartContext)
     return (
     <div>
-        <h1>Página de Checkout</h1>
+        {CartProducts.length !== 0 ? <Cart/> : <div><h3>No Tienes Items en el Carrito</h3><Link to="/catalogo"><button>Volver al Inicio</button></Link></div>}
     </div>
     )
 }
