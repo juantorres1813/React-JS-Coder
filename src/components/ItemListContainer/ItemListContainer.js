@@ -1,19 +1,24 @@
-import detailmock from "../../utils/details.mock";
 import { useState, useEffect } from "react";
 import ItemList from "../ItemList/ItemList";
-import './ItemListContainer.css'
+import './ItemListContainer.css';
+import {collection, getDocs } from 'firebase/firestore';
+import db from "../../firebaseConfig";
 
 const ItemListContainer = ({section}) => {
-    const getProducts = new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-            resolve(detailmock)
-        }, 2000)
-    })
+    const getProducts = async () => {
+        const productCollection = collection(db, 'productos')
+        const productSnapshot = await getDocs(productCollection)
+        const productList = productSnapshot.docs.map((doc)=>{
+            let product = doc.data()
+            product.id = doc.id
+            return product
+        })
+        return productList
+    }
 
     useEffect(()=>{
-        getProducts
+        getProducts()
         .then((res)=>{
-            //console.log(res)
             setlistProducts(res)
         })
         .catch((error)=>{

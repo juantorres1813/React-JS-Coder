@@ -2,33 +2,30 @@ import detailmock from "../../utils/details.mock"
 import ItemDetail from "../ItemDetail/ItemDetail"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
+import db from "../../firebaseConfig";
+import {doc, getDoc} from 'firebase/firestore'
 
 const ItemDetailContainer = () => {
-    const getItem = new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-            resolve(detailmock)
-        }, 2000)
-    })
 
     const {id} = useParams()
 
     useEffect(()=>{
-        getItem
+        getProduct()
         .then((res)=>{
             //console.log(res)
-            FilterbyID(res)
+            setProductData(res)
         })
         .catch((error)=>{
             console.log(error)
         })
     }, [id])
 
-    const FilterbyID = () =>{
-        detailmock.some((product)=>{
-            if (product.id.toString() === id) {
-                setProductData(product)
-            }
-        })
+    const getProduct = async () => {
+        const docRef = doc(db, 'productos', id)
+        const docSnapshot = await getDoc(docRef)
+        let product = docSnapshot.data()
+        product.id = docSnapshot.id
+        return product
     }
 
     const [productData, setProductData] = useState([])
