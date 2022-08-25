@@ -7,12 +7,15 @@ const CartProvider = ({children}) => {
 
     const [totalProducts, setTotalProducts] = useState(0)
 
+    const [totalPrice, setTotalPrice] = useState(0)
+
     const clear = () => {
         setCartProducts([])
     }
 
     const addToCart = (product) => {
         setTotalProducts(totalProducts + 1)
+        setTotalPrice(totalPrice + product.price)
         const isProductInCart = CartProducts.find(
             (productInCart) => productInCart.id === product.id,
         );
@@ -45,6 +48,7 @@ const CartProvider = ({children}) => {
         addToCart,
         deleteProduct,
         totalProducts,
+        totalPrice,
     }
 
     return (
