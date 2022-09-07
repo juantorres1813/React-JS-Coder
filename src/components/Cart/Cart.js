@@ -8,7 +8,7 @@ import { collection, addDoc } from 'firebase/firestore';
 
 const Cart = () => {
 
-    const {CartProducts ,deleteProduct, clear, totalPrice} = useContext(CartContext)
+    const {CartProducts ,deleteProduct, clear,} = useContext(CartContext)
 
     const [showModal, setShowModal] = useState(false)
     const [success, setSuccess] = useState()
@@ -23,12 +23,15 @@ const Cart = () => {
         } ),
         buyer: {},
         date: new Date().toLocaleString(),
-        total: totalPrice 
-    })
+        total: CartProducts.map((product) => {
+            return product.price * product.contador 
+        }).reduce((a, b) => a + b, 0)}
+    )
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
-        email:''
+        email: '',
+        email2: '',
     })
 
 
@@ -61,7 +64,7 @@ const Cart = () => {
                         <th>Producto</th>
                         <th>Precio</th>
                         <th>Cantidad</th>
-                        <th>Total</th>
+                        <th>Sub total</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -71,7 +74,7 @@ const Cart = () => {
                             <td><img src={`/assets/multimedia/${product.image}`} alt="" /></td>
                             <td>{product.title}</td>                  
                             <td>$ {product.price}</td>
-                            <td>{product.contador} </td>
+                            <td>{parseInt(product.contador)} </td>
                             <td><span>${parseInt(product.price) * parseInt(product.contador)}</span></td>
                             <td><DeleteIcon onClick={() => deleteProduct(product)}/></td>
                         </tr>
@@ -80,6 +83,9 @@ const Cart = () => {
                 </tbody>
             </table>
         </div>
+        Total: <span>${CartProducts.map((product) => {
+                                return product.price * product.contador 
+                            }).reduce((a, b) => a + b, 0)} </span>
         <button onClick={() => setShowModal(true)}>FINALIZAR COMPRA</button>
         <button onClick={() => clear()}>BORRAR TODO</button>
         {showModal && 
@@ -94,26 +100,41 @@ const Cart = () => {
                     <input 
                         type='text' 
                         name='name' 
-                        placeholder='Ingrese el nombre'
+                        placeholder='Ingrese nombre y apellido'
                         onChange={handleChange}
                         value={formData.name}
                     />
                     <input 
                         type='number' 
                         name='phone' 
-                        placeholder='Ingrese el telefono' 
+                        placeholder='Ingrese telefono' 
                         value={formData.phone}
                         onChange={handleChange}
+                        required
                     />
                     <input 
                         type='email' 
                         name='email' 
-                        placeholder='Ingrese el mail'
+                        placeholder='Ingrese email'
                         value={formData.email}
                         onChange={handleChange}
-
+                        required
                     />
-                    <button type="submit">Enviar</button>
+                    <input 
+                        type='email' 
+                        name='email2' 
+                        placeholder='Valide el email'
+                        value={formData.email2}
+                        onChange={handleChange}
+                        required
+                    />
+                    <button type="submit" disabled={
+                        !formData.name ||
+                        !formData.phone ||
+                        !formData.email ||
+                        !formData.email2 ||
+                        CartProducts.length === 0 ||
+                        !(formData.email === formData.email2)}>Enviar</button>
                 </form>
             )}
         </Modal>

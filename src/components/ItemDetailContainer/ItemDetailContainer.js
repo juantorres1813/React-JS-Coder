@@ -1,4 +1,3 @@
-import detailmock from "../../utils/details.mock"
 import ItemDetail from "../ItemDetail/ItemDetail"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
@@ -7,33 +6,36 @@ import {doc, getDoc} from 'firebase/firestore'
 
 const ItemDetailContainer = () => {
 
-    const {id} = useParams()
+    const [product, setProduct] = useState()
+    const [loading, setLoading] = useState(true)
 
-    useEffect(()=>{
-        getProduct()
-        .then((res)=>{
-            //console.log(res)
-            setProductData(res)
-        })
-        .catch((error)=>{
-            console.log(error)
+
+
+    const { id } = useParams()
+
+    useEffect(() => {
+        getDoc(doc(db, 'productos', id)).then(response => {
+            const product = { id: response.id, ...response.data()}
+            setProduct(product)
+        }).catch(e => {
+            console.log(e)
+        }).finally(() =>{
+        setLoading(false, 2500)
         })
     }, [id])
 
-    const getProduct = async () => {
-        const docRef = doc(db, 'productos', id)
-        const docSnapshot = await getDoc(docRef)
-        let product = docSnapshot.data()
-        product.id = docSnapshot.id
-        return product
+
+    if(loading){
+    return <div className='loading'>
+        <img src="/assets/multimedia/logo.jpg" alt="logo" />
+        <h1 >Cargando...</h1>
+    </div>
     }
 
-    const [productData, setProductData] = useState([])
-
     return (
-    <div>
-        <ItemDetail data={productData}/>
-    </div>
+        <div>
+            <ItemDetail data={product}/>
+        </div>
     )
 }
 

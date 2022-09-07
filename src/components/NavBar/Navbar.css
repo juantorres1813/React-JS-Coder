@@ -1,23 +1,23 @@
 .navbar-principal {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-evenly;
     --bs-bg-opacity: 1;
     background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
     width: 100%;
 }
 
-.ul-menu {
+.menu {
     display: flex;
     flex-flow: row wrap;
     list-style: none;
 }
-.ul-menu button{
+.menu a{
     text-transform: uppercase;
     font-size: 28px;
-    background: #e3d0d0;
 }
 
-.ul-menu button:hover {
+.menu a:hover {
     background-color: rgba(53, 53, 53, 0.3);
     transition: .4s;
 }

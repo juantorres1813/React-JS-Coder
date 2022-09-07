@@ -1,37 +1,48 @@
 import { useState, useEffect } from "react";
 import ItemList from "../ItemList/ItemList";
 import './ItemListContainer.css';
-import {collection, getDocs } from 'firebase/firestore';
+import { getDocs, collection, query, where } from 'firebase/firestore';
 import db from "../../firebaseConfig";
+import { useParams } from "react-router-dom";
+
+
 
 const ItemListContainer = ({section}) => {
-    const getProducts = async () => {
-        const productCollection = collection(db, 'productos')
-        const productSnapshot = await getDocs(productCollection)
-        const productList = productSnapshot.docs.map((doc)=>{
-            let product = doc.data()
-            product.id = doc.id
-            return product
-        })
-        return productList
-    }
+    const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(true)
 
-    useEffect(()=>{
-        getProducts()
-        .then((res)=>{
-            setlistProducts(res)
-        })
-        .catch((error)=>{
-            console.log(error)
-        })
-    }, [])
+    const {category} = useParams()
 
-    const [listProducts, setlistProducts] = useState([])
+    useEffect(() => {
+
+        const colletionRef = category
+        ? query(collection(db, "productos"), where("category", "==", category))
+        : collection(db, "productos")
+
+        getDocs(colletionRef).then(response =>{
+            const products = response.docs.map(doc =>{
+                return {id: doc.id, ...doc.data()}
+            })
+            setProducts(products)
+        }).catch(e => {
+            console.log(e)
+        }).finally(() =>{
+            setLoading(false, 2500)
+        })
+    }, [category])
+
+    if(loading){
+        return <div className='loading'>
+            <img src="/assets/multimedia/logo.jpg" alt="logo" />
+            <h1 >Cargando...</h1>
+        </div>
+        }
+
 
     return (
     <div className="list-products">
         <h3>{section}</h3>
-        <ItemList dataProducts={listProducts} />
+        <ItemList dataProducts={products} />
     </div>
     )
 }

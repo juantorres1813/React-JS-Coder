@@ -8,7 +8,7 @@ const Checkout = () => {
     const {CartProducts} = useContext(CartContext)
     return (
     <div>
-        {CartProducts.length !== 0 ? <Cart/> : <div><h3>No Tienes Items en el Carrito</h3><Link to="/catalogo"><button>Volver al Inicio</button></Link></div>}
+        {CartProducts.length !== 0 ? <Cart/> : <div><h3>No Tienes Items en el Carrito</h3><Link to="/"><button>Volver al Inicio</button></Link></div>}
     </div>
     )
 }
