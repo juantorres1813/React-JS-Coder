@@ -37,6 +37,7 @@ const CartWidget = () => {
                 'aria-labelledby': 'basic-button',
                 }}
             >
+                <div className='menu-cart'>
                 {CartProducts.map((product) => {
                     return(
                         <div className='item-cart-product' key={product.id}>
@@ -54,8 +55,9 @@ const CartWidget = () => {
                         </div>
                     )
                 })}
-                        <button onClick={() => clear()} className={"btn-delete-all"}>Borrar todo</button>
-                        </Menu>
+                <button onClick={() => clear()} className={"btn-delete-all"}>Borrar todo</button>
+                </div>
+            </Menu>
                     </div>
                 )
             }

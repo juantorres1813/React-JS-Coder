@@ -27,3 +27,15 @@
     height: 120px;
 }
 
+.menu-cart{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+    text-align: center;
+    height: 85vh;
+}
+
+.item-cart-product img{
+    object-fit: cover;
+}

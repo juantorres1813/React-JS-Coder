@@ -4,6 +4,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Modal from '../Modal/Modal';
 import db from '../../firebaseConfig.js';
 import { collection, addDoc } from 'firebase/firestore';
+import './Cart.css'
 
 
 const Cart = () => {
@@ -18,7 +19,8 @@ const Cart = () => {
             return {
                 id: product.id,
                 title: product.title,
-                price: product.price
+                price: product.price,
+                quantity: product.contador,
             }
         } ),
         buyer: {},
@@ -42,7 +44,7 @@ const Cart = () => {
 
     const submitData = (e) => {
         e.preventDefault()
-        console.log("order para enviar: ", {...order, buyer: formData})
+        // console.log("order para enviar: ", {...order, buyer: formData})
         pushData({...order, buyer: formData})
     }
 
@@ -50,14 +52,14 @@ const Cart = () => {
         const collectionOrder = collection(db, 'ordenes')
         const orderDoc = await addDoc(collectionOrder, newOrder)
         setSuccess(orderDoc.id)
-        console.log('ORDEN GENERADA', orderDoc)
+        // console.log('ORDEN GENERADA', orderDoc)
     }
 
     return (
         <>
-        <h1>Checkout</h1>
+        <h1 className='checkout'>Checkout</h1>
         <div>
-            <table>
+            <table className='table'>
                 <thead>
                     <tr>
                         <th>*</th>
@@ -81,11 +83,16 @@ const Cart = () => {
                         )
                     })}
                 </tbody>
+                <tfoot>
+                    <td>Total</td>
+                    <td>
+                        <span>${CartProducts.map((product) => {
+                            return product.price * product.contador 
+                        }).reduce((a, b) => a + b, 0)} </span>
+                    </td>
+                </tfoot>
             </table>
         </div>
-        Total: <span>${CartProducts.map((product) => {
-                                return product.price * product.contador 
-                            }).reduce((a, b) => a + b, 0)} </span>
         <button onClick={() => setShowModal(true)}>FINALIZAR COMPRA</button>
         <button onClick={() => clear()}>BORRAR TODO</button>
         {showModal && 
