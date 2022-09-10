@@ -41,3 +41,23 @@
     text-align: center;
     margin: 30px;
 }
+
+.botones-cart{
+    display: flex;
+    justify-content: center;
+    height: 50px;
+}
+
+.botones-cart button{
+    font-weight: bold;
+    color: white;
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity))
+}
+
+.boton-volver{
+    font-weight: bold;
+    color: white;
+    --bs-bg-opacity: 1;
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity))
+}

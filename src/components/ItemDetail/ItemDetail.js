@@ -16,8 +16,8 @@ const ItemDetail = ({data}) => {
             <img src={`/assets/multimedia/${image2}`} alt="imagen"/>
             <img src={`/assets/multimedia/${image3}`} alt="imagen"/>
             </div>
-            <p>{title}</p>
-            <p>{description}</p>
+            <p className="details-title">{title}</p>
+            <p className="details-desc">{description}</p>
             <span>$ {price}</span>
             <h3>{stock} disponibles</h3>
             {quantitySelected > 0 ? <button className="btn btn-primary"><Link to="/cart">TERMINAR COMPRA</Link></button> : <ItemCount stockProduct={stock} setQuantitySelected={setQuantitySelected} productData={data} />}

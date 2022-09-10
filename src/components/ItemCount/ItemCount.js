@@ -35,7 +35,7 @@ function ItemCount({ stockProduct, setQuantitySelected, productData}) {
                 <p>{contador}</p>
                 <button onClick={addNumber}>+</button>
             </div>
-            <button onClick={onAdd}>AGREGAR AL CARRITO</button>
+            <button className='btn btn-primary' onClick={onAdd}>AGREGAR AL CARRITO</button>
         </div>
 )}
 

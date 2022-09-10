@@ -93,8 +93,10 @@ const Cart = () => {
                 </tfoot>
             </table>
         </div>
-        <button onClick={() => setShowModal(true)}>FINALIZAR COMPRA</button>
-        <button onClick={() => clear()}>BORRAR TODO</button>
+        <div className='botones-cart'>
+            <button onClick={() => setShowModal(true)}>FINALIZAR COMPRA</button>
+            <button onClick={() => clear()}>BORRAR TODO</button>
+        </div>
         {showModal && 
             <Modal title="DATOS DE CONTACTO" close={() => setShowModal()}>
             {success ? (
