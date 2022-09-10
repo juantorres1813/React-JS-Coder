@@ -28,14 +28,43 @@
 }
 
 .menu-cart{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 300px;
-    text-align: center;
-    height: 85vh;
+    overflow-y: auto;
+    max-height: 350px;
+    width:22vw;
+}
+
+.item-cart-product{
+    display:grid;
+    grid-template-columns: 4fr 3fr 1fr;
+    padding:5% 2%;
+    border-bottom:solid 1px lightgray;  
 }
 
 .item-cart-product img{
-    object-fit: cover;
+    width:100%;
+}
+
+.details{
+    padding-left:10%;
+}
+
+.item-cart-product p{
+    text-align: left; 
+    margin-bottom:15%;
+}
+
+.total{
+    text-align: right;
+    padding:5%;
+}
+
+.btn-all{
+    display: flex;
+    justify-content: center;
+}
+
+.btn-delete-all{
+    background-color: red;
+    width: 100px;
+    height: 40px;
 }

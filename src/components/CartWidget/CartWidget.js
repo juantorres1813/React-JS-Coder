@@ -1,6 +1,5 @@
 import {useState , useContext} from 'react';
 import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import { CartContext } from '../../context/CartContext';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -42,20 +41,21 @@ const CartWidget = () => {
                     return(
                         <div className='item-cart-product' key={product.id}>
                             <img src={`/assets/multimedia/${product.image}`} alt="" />
-                            <div className='cart-product__details'>
+                            <div className='details'>
                                 <p>{product.title}</p>
                                 <p>Cantidad: {product.contador} </p>
-                            </div>
-                            <div className='cart-product__details'>
                                 <span>${parseInt(product.price) * parseInt(product.contador)}</span>
                             </div>
-                            <div className='cart-product__action' >
+                            <div className='cart-delete' >
                                 <DeleteIcon onClick={() => deleteProduct(product)}/>
                             </div>
                         </div>
                     )
                 })}
-                <button onClick={() => clear()} className={"btn-delete-all"}>Borrar todo</button>
+                <div class="total">Total: ${CartProducts.map((product) => {
+                            return product.price * product.contador 
+                        }).reduce((a, b) => a + b, 0)}</div>
+                <div className='btn-all'><button onClick={() => clear()} className={"btn-delete-all"}>Borrar todo</button></div>
                 </div>
             </Menu>
                     </div>
