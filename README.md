@@ -6,4 +6,4 @@ El mismo cuenta con las 2 siguientes librerias por el momento: react-router-dom,
 
 GIF Demostración (Recorrido completo de una compra)
 
-![](./public/GIF Entrega Final.gif)
+!(./public/GIF Entrega Final.gif)
